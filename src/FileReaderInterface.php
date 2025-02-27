@@ -1,6 +1,6 @@
 <?php
 
-namespace Erciyes\UniParser;
+namespace Merterciyescagan\UniParser;
 
 interface FileReaderInterface {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Erciyes\UniParser;
+namespace Merterciyescagan\UniParser;
 
 require_once "FileReaderInterface.php";
 require_once "FileType/CSV.php";
@@ -9,11 +9,11 @@ require_once "FileType/XLSX.php";
 require_once "FileType/XML.php";
 
 
-use Erciyes\UniParser\FileReaderInterface;
-use Erciyes\UniParser\FileType\CSV;
-use Erciyes\UniParser\FileType\JSON;
-use Erciyes\UniParser\FileType\XLSX;
-use Erciyes\UniParser\FileType\XML;
+use Merterciyescagan\UniParser\FileReaderInterface;
+use Merterciyescagan\UniParser\FileType\CSV;
+use Merterciyescagan\UniParser\FileType\JSON;
+use Merterciyescagan\UniParser\FileType\XLSX;
+use Merterciyescagan\UniParser\FileType\XML;
 use \Exception;
 
 class File {

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Erciyes\UniParser\FileType;
+namespace Merterciyescagan\UniParser\FileType;
 
 require_once __DIR__. "/../File.php";
 require_once __DIR__. "/../FileReaderInterface.php";
 
-use Erciyes\UniParser\FileReaderInterface;
-use Erciyes\UniParser\File;
+use Merterciyescagan\UniParser\FileReaderInterface;
+use Merterciyescagan\UniParser\File;
 use Exception; 
 
 final class JSON extends File implements FileReaderInterface {

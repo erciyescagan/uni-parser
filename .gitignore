@@ -1,0 +1,4 @@
+vendor/
+data.csv
+test.php
+composer.lock
