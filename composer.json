@@ -1,0 +1,24 @@
+{
+    "name": "merterciyescagan/uni-parser",
+    "description": "The package parses the CSV, JSON, XLSX or XML files and generates CREATE TABLE and INSERT INTO sql strings.",
+    "type": "library",
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.0"
+    },
+    "require-dev": {
+        "phpoffice/phpspreadsheet": "^4.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Merterciyescagan\\UniParser\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "erciyescagan",
+            "email": "erciyescagan@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
