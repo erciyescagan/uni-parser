@@ -1,6 +1,6 @@
 {
     "name": "merterciyescagan/uni-parser",
-    "description": "The package parses the CSV, JSON, XLSX or XML files and generates CREATE TABLE and INSERT INTO sql strings.",
+    "description": "The package parses CSV, JSON, XLSX, or XML files and generates CREATE TABLE and INSERT INTO SQL statements.",
     "type": "library",
     "require": {
         "phpoffice/phpspreadsheet": "^4.0"
