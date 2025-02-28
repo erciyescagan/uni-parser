@@ -65,7 +65,7 @@ class File {
     }
 
 
-    public function generateTableString(): string 
+    public function generateCreateTableString(): string 
     {
         if (empty($this->tableName)) {
             throw new Exception("table name is empty, cannot generate CREATE TABLE query.");
@@ -75,7 +75,7 @@ class File {
 
     }
 
-    public function generateBatchImportString($dataBatch): string 
+    public function generateBatchImportIntoString($dataBatch): string 
     {
 
         if (empty($this->tableName)) {
