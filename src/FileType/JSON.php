@@ -14,14 +14,22 @@ final class JSON extends File implements FileReaderInterface {
 
 	protected string $file_path;
     protected array $readData = [];
-    protected array $columns = [];
-	public function __construct($file_path){
+
+	public function __construct(string $file_path){
+		if (!file_exists($file_path) || !is_readable($file_path)) {
+			throw new Exception("File not found or not readable: ". htmlspecialchars($file_path));
+		}
 		$this->file_path = $file_path;
 	}
 
   	public function read(): array {
-    	$contents = file_get_contents($this->file_path, true);
-    	$this->readData = json_decode($contents, true);
+    	$contents = file_get_contents($this->file_path);
+
+    	if ($contents === false) {
+    		throw new Exception("Failed to read file: ". htmlspecialchars($this->file_path));
+    	}
+
+    	$this->readData = json_decode($contents, true, 512, JSON_THROW_ON_ERROR);
 
     	if (!is_numeric(key($this->readData))) {
         	$newData = []; 
@@ -35,12 +43,17 @@ final class JSON extends File implements FileReaderInterface {
         	$this->readData = $newData;
     	}
 	    
-	    return $this->readData;
+        return is_array($this->readData) ? $this->readData : [];
 	}
 
     public function getColumns(): array {
-        $content = json_decode(file_get_contents($this->file_path),true);
-        $key = key($content);
+
+    	if (!$this->readData) {
+    		$this->read();
+    	}
+
+    	return !empty($this->readData) ? array_keys(reset($this->readData)) : [];
+
         if (!is_numeric(key($content))) {
         	$index = 0;
         	$arrayKeys = array_keys($content[$key]);
