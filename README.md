@@ -37,3 +37,11 @@ echo $sqlCreate;
 $sqlInsert = $file->generateBatchImportString($data);
 echo $sqlInsert;
 ```
+
+## Contributing
+
+**Contributions are welcome! If you have ideas, improvements, or bug fixes, feel free to open an issue or submit a pull request.**
+
+## License
+
+**UniParser is open-sourced software licensed under the MIT License.**
