@@ -3,8 +3,7 @@
     "description": "The package parses CSV, JSON, XLSX, or XML files and generates CREATE TABLE and INSERT INTO SQL statements.",
     "type": "library",
     "require": {
-        "phpoffice/phpspreadsheet": "^4.0",
-
+        "phpoffice/phpspreadsheet": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.6"
