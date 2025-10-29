@@ -1,0 +1,7 @@
+{
+  "columns": ["id", "name", "department", "meta_notes"],
+  "data": [
+    {"id": 1, "name": "Alice", "department": "Engineering", "meta_notes": {"level": "senior"}},
+    {"id": 2, "name": "Bob", "department": "Sales", "meta_notes": null}
+  ]
+}

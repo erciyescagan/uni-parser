@@ -15,6 +15,7 @@ require_once "FileType/JSON.php";
 require_once "FileType/XLSX.php";
 require_once "FileType/XML.php";
 require_once "FileType/SQL.php";
+require_once "FileType/Tableu.php";
 
 
 use Merterciyescagan\UniParser\FileReaderInterface;
@@ -23,6 +24,7 @@ use Merterciyescagan\UniParser\FileType\JSON;
 use Merterciyescagan\UniParser\FileType\XLSX;
 use Merterciyescagan\UniParser\FileType\XML;
 use Merterciyescagan\UniParser\FileType\SQL;
+use Merterciyescagan\UniParser\FileType\TABLEU;
 use \Exception;
 use \JsonException;
 
@@ -61,7 +63,8 @@ class File {
             'json' => JSON::class,
             'xlsx' => XLSX::class,
             'xml'  => XML::class,
-            'sql' => SQL::class
+            'sql' => SQL::class,
+            'tableu' => TABLEU::class
         ];
 
         if (!array_key_exists($extension, $supportedFormats)) {
