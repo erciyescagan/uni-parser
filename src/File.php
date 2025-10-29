@@ -24,6 +24,7 @@ use Merterciyescagan\UniParser\FileType\XLSX;
 use Merterciyescagan\UniParser\FileType\XML;
 use Merterciyescagan\UniParser\FileType\SQL;
 use \Exception;
+use \JsonException;
 
 class File {
     protected string $file_path;
@@ -117,32 +118,36 @@ class File {
     }
 
 
-    private function generateColumnsArrayForSQLString(): string 
+    private function generateColumnsArrayForSQLString(): string
     {
         if (empty($this->columns)) {
             throw new Exception("Columns are not set.");
         }
 
-        $columnDefinitions = array_map(
-            fn($column) => sprintf("%s VARCHAR(255)", 
-                $this->sanitizeColumnName($column)), 
-            $this->columns);
-        $sql = "("; 
-
-        return "(" . implode(", ", $columnDefinitions) . ")";
-
+        $columnDefinitions = [];
 
         foreach ($this->columns as $column) {
             if (is_null($column)) {
-                die("Please don't leave any empty column names on your xlsx file.\n");
+                throw new Exception("Please don't leave any empty column names on your xlsx file.");
             }
-            $column = !is_string($column) ? json_encode($column) :  $column;
+
+            if (!is_string($column)) {
+                try {
+                    $column = json_encode($column, JSON_THROW_ON_ERROR);
+                } catch (JsonException $exception) {
+                    throw new Exception(
+                        "Failed to encode column name to JSON: " . $exception->getMessage(),
+                        0,
+                        $exception
+                    );
+                }
+            }
+
             $sanitizedColumn = $this->sanitizeColumnName($column);
-            $columnDefinitions[] = "$sanitizedColumn VARCHAR(255)";
+            $columnDefinitions[] = sprintf("%s VARCHAR(255)", $sanitizedColumn);
         }
-     
-        $sql .= implode(", ", $columnDefinitions) . ")";
-        return $sql;
+
+        return "(" . implode(", ", $columnDefinitions) . ")";
     }
 
 
