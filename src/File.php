@@ -120,7 +120,7 @@ class File {
     private function generateColumnsArrayForSQLString(): string 
     {
         if (empty($this->columns)) {
-            throw new Exception("Columns is not set.");
+            throw new Exception("Columns are not set.");
         }
 
         $columnDefinitions = array_map(
