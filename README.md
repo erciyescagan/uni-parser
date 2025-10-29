@@ -1,10 +1,10 @@
 # UniParser
 
-**UniParser** is a PHP package that simplifies database integration by automatically parsing CSV, JSON, XLSX, and XML files and generating `CREATE TABLE` and `INSERT INTO` SQL statements.
+**UniParser** is a PHP package that simplifies database integration by automatically parsing CSV, JSON, XLSX, XML, SQL, and Tableu (`.tableu`) files and generating `CREATE TABLE` and `INSERT INTO` SQL statements.
 
 ## Features
 
-- **Multi-Format Support:** Easily parse CSV, JSON, XLSX, and XML files.
+- **Multi-Format Support:** Easily parse CSV, JSON, XLSX, XML, SQL, and Tableu files.
 - **Automatic SQL Generation:** Generate SQL queries for table creation and data insertion.
 - **Flexible Usage:** Retrieve data as an array or generate SQL strings for MySQL integration.
 - **Secure & Fast:** Designed with security in mind and optimized for performance.
@@ -37,6 +37,22 @@ echo $sqlCreate;
 $sqlInsert = $file->generateBatchImportString($data);
 echo $sqlInsert;
 ```
+
+### Tableu files
+
+UniParser expects `.tableu` files to contain JSON describing the dataset. You can either provide an object with a `columns` array and a `data` (or `rows`) array, or an array of row objects. A minimal example looks like:
+
+```json
+{
+  "columns": ["id", "name", "department"],
+  "data": [
+    {"id": 1, "name": "Alice", "department": "Engineering"},
+    {"id": 2, "name": "Bob", "department": "Sales"}
+  ]
+}
+```
+
+When the `columns` key is present, UniParser keeps the column order defined in the file. If it is omitted, the column names are inferred from the first row in the dataset.
 
 ## Contributing
 
