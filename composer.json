@@ -4,11 +4,9 @@
     "type": "library",
     "require": {
         "phpoffice/phpspreadsheet": "^4.0",
-        "phpunit/phpunit": "^9.6"
 
     },
     "require-dev": {
-        "phpoffice/phpspreadsheet": "^4.0",
         "phpunit/phpunit": "^9.6"
     },
     "license": "MIT",
